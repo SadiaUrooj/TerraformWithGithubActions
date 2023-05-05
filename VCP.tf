@@ -11,7 +11,7 @@ resource "aws_subnet" "PublicSubnet"{
     cidr_block="10.0.0.0/24"
 }
 //STEP 3: Create a private subnet
-resource " aws_subnet" "PrivateSubnet" {
+resource "aws_subnet" "PrivateSubnet" {
     vcp_id = aws_vcp.myvcp.vcp_id
     cidir_block="10.0.2.0/24"
   
