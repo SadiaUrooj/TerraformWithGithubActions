@@ -1,0 +1,45 @@
+# This workflow is triggered when changes are pushed to the main branch
+name: Terraform
+on:
+  push:
+    branches:
+      - main
+# Define a job that will run the Terraform commands
+jobs:
+  terraform:
+    # Use the latest Ubuntu image as the runner for this job
+    runs-on: ubuntu-latest
+    # Define the steps that will be executed in the job
+    steps:
+      # Checkout the code repository to the runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Configure AWS credentials for Terraform
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          # Use the secrets in the GitHub repository to set the AWS access key ID
+          aws-access-key-id: ${{ secrets.AKIAR7USEHHQUN5PN3YP }}
+          # Use the secrets in the GitHub repository to set the AWS secret access key
+          aws-secret-access-key: ${{ secrets.ALe0Trl/df1hoaF8va5uKg1vuptdXxJOkplkSrPl }}
+          # Set the AWS region to use
+          aws-region: us-east-1
+          
+      # Install and configure the specified version of Terraform
+      - name: Initialize Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          # Using version 1.4.6 version of Terraform
+          terraform_version: 1.4.6
+      # Run Terraform plan to preview the changes
+      - name: Terraform Plan
+        id: plan
+        # -out=tfplan will generate binary file named "tfplan" 
+        run: |
+          terraform init    
+          terraform plan -out=tfplan
+      # Apply the changes to the infrastructure if the push is made to the main branch
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          terraform apply -auto-approve tfplan
