@@ -19,9 +19,9 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           # Use the secrets in the GitHub repository to set the AWS access key ID
-          aws-access-key-id: ${{ secrets.AKIAZBUOXMHXL3FZFWYK }}
+          aws-access-key-id: ${{ secrets.AccessKey }}
           # Use the secrets in the GitHub repository to set the AWS secret access key
-          aws-secret-access-key: ${{ secrets.TjJNsbctAtJFRy/AZC8sZiVwuoA0+VWowYpSDakZ}}
+          aws-secret-access-key: ${{ secrets.SecretAccessKey}}
           # Set the AWS region to use
           aws-region: us-east-1
           
