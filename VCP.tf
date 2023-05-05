@@ -35,5 +35,5 @@ resource "aws_route_table" "PublicRouteTable"{
 //STEP 7: Create route table association public subnet
 resource "aws_route_table_association" "PublicRouteTableAssociation"{
     subnet_id = aws_subnet.PublicSubnet.id
-    route_table_id = aws_route_table.PublicRT.id
+    route_table_id = aws_route_table.PublicRouteTable.id
 }
