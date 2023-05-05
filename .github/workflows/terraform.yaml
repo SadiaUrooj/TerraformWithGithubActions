@@ -21,7 +21,7 @@ jobs:
           # Use the secrets in the GitHub repository to set the AWS access key ID
           aws-access-key-id: ${{ secrets.AKIAYQBG57W4UISZF4FO }}
           # Use the secrets in the GitHub repository to set the AWS secret access key
-          aws-secret-access-key: ${{ secrets.Fwlb0gfGH7BWh3uk8qZnj4a8CPH7g7Kysoqx8dE/ }}
+          aws-secret-access-key: ${{ secrets.Fwlb0gfGH7BWh3uk8qZnj4a8CPH7g7Kysoqx8dE/}}
           # Set the AWS region to use
           aws-region: us-east-1
           
